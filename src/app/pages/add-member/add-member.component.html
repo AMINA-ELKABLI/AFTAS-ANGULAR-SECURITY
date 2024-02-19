@@ -1,0 +1,57 @@
+<div class="card mb-4">
+    <app-alert
+        [alertType]="alertType"
+        [message]="alertMessage"
+        [showAlert]="showAlert"
+        (onClose)="handleAlertClose()"
+      ></app-alert>
+      <app-component-loader *ngIf="memberLoading==true else memberShow"></app-component-loader>
+      <ng-template #memberShow>
+    <div class="card-body mt-3">
+        <div class="card-title">Create New Member:</div>
+
+
+        <form class="needs-validation">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom01"> Name</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="name" [(ngModel)]="member.name" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Family Name</label>
+                    <input type="text" class="form-control" id="validationCustom02" name="familyName" [(ngModel)]="member.familyName" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Nationality</label>
+                    <input type="text" class="form-control" id="validationCustom02" name="nationality" [(ngModel)]="member.nationality" required>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Identity Document Type</label>
+                    <select class="custom-select"  name="identityNumber" [(ngModel)]="member.identityDocumentType" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="CIN">CIN</option>
+                        <option value="PASSPORT">PASSPORT</option>
+                        <option value="RESIDENCE_CARD">RESIDENCE_CARD</option>
+                        <option value="PERMIT">PERMIT</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Indentity Number</label>
+                    <input type="text" class="form-control" id="validationCustom04" name="identityNumber" [(ngModel)]="member.identityNumber" required>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Accession Date</label>
+                    <input type="text" class="form-control" id="validationCustom02" name="accessionDate" [(ngModel)]="member.accessionDate" required>
+                </div>
+
+            </div>
+            <div align="right"><button class="btn btn-primary" type="submit" (click)="addMember()">Create</button></div>
+
+        </form>
+    </div>
+    </ng-template>
+    </div>
